@@ -23,7 +23,8 @@ public class Basketball
         reader.TextFieldType = FieldType.Delimited;
         reader.SetDelimiters(",");
         reader.ReadFields(); // ignore header row
-        while (!reader.EndOfData) {
+        while (!reader.EndOfData)
+        {
             var fields = reader.ReadFields()!;
             var playerId = fields[0];
             var points = int.Parse(fields[8]);
@@ -33,4 +34,6 @@ public class Basketball
 
         var topPlayers = new string[10];
     }
+    
+    
 }
