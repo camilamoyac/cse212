@@ -13,7 +13,17 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        // 1. Create a static array of size length and type double
+        double[] multiples = new double[length];
+        // 2. make a loop for lenth amount of times
+        for (int i = 0; i < length; i++)
+        {
+            // 3. for each iteration calculate the multiple: number * (index + 1) (so it doesnt start
+            // on 0) and store on the i position of the array
+            multiples[i] = number * (i + 1);
+        }   
+        // 4. return the finished array
+        return multiples;
     }
 
     /// <summary>
@@ -29,5 +39,22 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        // for the rotation we essentially take out the last "amount" of data from the list and insert it in the beginning so:
+        // 1. calculate the index of the first item of the tail end of the list that will be moved to the front
+        int itemIndex = data.Count - amount;
+        // from the example: itemIndex = 9 - 3 = 6 -> index of 7
+
+        // 2. use GetRange to copy the tail end of the list from the itemIndex
+        List<int> tailEnd = data.GetRange(itemIndex, amount);
+        // from the example: tailEnd = 7, 8, 9
+
+        // 3. use RemoveRange to remove the tailEnd from the original list
+        data.RemoveRange(itemIndex, amount);
+        // from the example: data = 1, 2, 3, 4, 5, 6
+
+        // 4. use InsertRange to add the tail end to the front of the list
+        data.InsertRange(0, tailEnd);
+        // from the example: data = 7, 8, 9, 1, 2, 3, 4, 5, 6
     }
 }
